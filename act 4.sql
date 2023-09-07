@@ -55,3 +55,25 @@ ALTER TABLE comentarios ADD FOREIGN KEY (posts_id) REFERENCES posts(posts_id);
 
 ALTER TABLE posts_etiquetas ADD FOREIGN KEY (etiquetas_id) REFERENCES etiquetas(etiqueta_id); 
 ALTER TABLE posts_etiquetas ADD FOREIGN KEY (posts_id) REFERENCES posts(posts_id); 
+ALTER TABLE usuarios CHANGE login nombre varchar(30) NOT NULL;
+ALTER TABLE usuarios ADD COLUMN apellidos VARCHAR(30) NOT NULL;
+ ALTER TABLE usuarios ADD COLUMN correo electronico VARCHAR(30) NOT NULL;
+  ALTER TABLE usuarios ADD COLUMN Empresa VARCHAR(30) NOT NULL;
+   ALTER TABLE usuarios ADD COLUMN Telefono VARCHAR(30) NOT NULL;
+    ALTER TABLE usuarios ADD COLUMN Mexici VARCHAR(30) NOT NULL;
+     ALTER TABLE usuarios ADD COLUMN Codigopostal VARCHAR(30) NOT NULL;
+ALTER TABLE posts 
+MODIFY contenido VARCHAR(250) NOT NULL;
+ALTER TABLE usuarios
+ADD edad INT (3) NOT NULL CHECK (edad >=18);
+
+CREATE TABLE mensajeria (
+    mensajeria_id INT PRIMARY KEY AUTO_INCREMENT,
+    mensajeria_emisor TEXT,
+    mensajeria_receptor TEXT,
+    mensajeria_fechaCreacion DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+ALTER TABLE mensajeria ADD COLUMN usuario_id INT;
+
+ALTER TABLE mensajeria ADD FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id);
